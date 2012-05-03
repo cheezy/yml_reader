@@ -13,7 +13,7 @@ module YmlReader
   end
 
   def load(filename)
-    YAML.load_file "#{@yml_directory}/#{filename}"
+    @yml = YAML.load_file "#{@yml_directory}/#{filename}"
   end
   
 end
