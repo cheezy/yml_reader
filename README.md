@@ -40,10 +40,6 @@ Or install it yourself as:
 
     $ gem install yml_reader
 
-## Usage
-
-TODO: Write usage instructions here
-
 ## Contributing
 
 1. Fork it
