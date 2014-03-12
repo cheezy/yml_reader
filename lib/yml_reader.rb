@@ -23,7 +23,7 @@ module YmlReader
   # directory specified by a call to the yml_directory= method.
   #
   def load(filename)
-    @yml = YAML.load_file "#{yml_directory}/#{filename}"
+    @yml = YAML.load(ERB.new(File.read("#{yml_directory}/#{filename}")).result)
   end
   
 end
