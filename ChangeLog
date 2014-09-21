@@ -1,3 +1,7 @@
+=== Version 0.4 / 2014-9-21
+* Fixes
+  * require yaml so it works with latest ruby
+
 === Version 0.3 / 2014-6-1
 * Enhancements
   * Updated so yml file can now include erb (thanks Justin Rolston)

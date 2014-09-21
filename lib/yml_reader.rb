@@ -1,4 +1,5 @@
 require "yml_reader/version"
+require 'yaml'
 
 module YmlReader
 
@@ -23,7 +24,7 @@ module YmlReader
   # directory specified by a call to the yml_directory= method.
   #
   def load(filename)
-    @yml = YAML.load(ERB.new(File.read("#{yml_directory}/#{filename}")).result)
+    @yml = ::YAML.load(ERB.new(File.read("#{yml_directory}/#{filename}")).result)
   end
   
 end

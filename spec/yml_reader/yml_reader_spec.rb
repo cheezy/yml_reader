@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'yaml'
 
 module MyModule
   extend YmlReader
@@ -24,11 +25,4 @@ describe YmlReader do
     end
   end
 
-  context "when reading yml files" do
-    it "should read files from the yml_directory" do
-      MyModule.yml_directory = 'conf'
-      YAML.should_receive(:load_file).with('conf/test').and_return({})
-      MyModule.load('test')
-    end
-  end
 end
