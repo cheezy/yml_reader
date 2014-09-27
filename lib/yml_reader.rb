@@ -1,5 +1,6 @@
 require "yml_reader/version"
 require 'yaml'
+require 'erb'
 
 module YmlReader
 
