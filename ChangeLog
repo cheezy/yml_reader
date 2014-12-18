@@ -1,4 +1,4 @@
-=== Version 0.5
+=== Version 0.5 / 2014-12-18
 * Fixes
   * Added require for ERB to resolve issues when not in bundle (thanks Doug Morgan)
 
