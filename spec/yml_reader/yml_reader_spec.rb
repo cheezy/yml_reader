@@ -4,6 +4,9 @@ require 'yaml'
 module MyModule
   extend YmlReader
 
+  def self.data
+    @yml
+  end
   def self.default_directory
     'default_directory'
   end
@@ -22,6 +25,17 @@ describe YmlReader do
 
     it "should default to a directory specified by the containing class" do
       MyModule.yml_directory.should == 'default_directory'
+    end
+  end
+
+  context 'when including files' do
+    before(:each) do
+      MyModule.yml_directory = File.expand_path('data', File.dirname(__FILE__))
+    end
+
+    it 'should load data from included yaml' do
+      MyModule.load 'with_includes.yml'
+      MyModule.data['include_1']['key_1'].should == 'Value 1'
     end
   end
 
