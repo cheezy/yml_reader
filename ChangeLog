@@ -1,3 +1,7 @@
+=== Version 0.6 / 2015-12-1
+* Enhancements
+  * Added include_yml keyword to allow inclusion of one file within another (thanks Donavan Stanley)
+
 === Version 0.5 / 2014-12-18
 * Fixes
   * Added require for ERB to resolve issues when not in bundle (thanks Doug Morgan)
