@@ -1,0 +1,4 @@
+---
+<%= include_yml("include1.yml") %>
+'section_1':
+  'foo': 'bar'
