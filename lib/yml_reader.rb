@@ -24,10 +24,17 @@ module YmlReader
   # Loads the requested file.  It will look for the file in the
   # directory specified by a call to the yml_directory= method.
   #
-  def load(filename)
-    @yml = ::YAML.load(ERB.new(File.read("#{yml_directory}/#{filename}")).result(binding))
-  end
+  #def load(filename)
+  #  @yml = ::YAML.load(ERB.new(File.read("#{yml_directory}/#{filename}")).result(binding))
+  #end
 
+  def load(filename)
+    files= filename.include?(',') ? filename.split(',') : [filename]
+    @yml = files.inject({}) do |total_merge,file|
+      total_merge.merge!(::YAML.load(ERB.new(File.read("#{yml_directory}/#{file}")).result(binding)))
+    end
+  end
+  
   def include_yml(filename)
     ERB.new(IO.read("#{yml_directory}/#{filename}")).result
   end
