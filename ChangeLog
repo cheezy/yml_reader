@@ -1,3 +1,7 @@
+=== Version 0.7 / 2016-1-6
+* Enhancements
+  * Added ability to supply multiple files to load via the load method (Thanks Justin Commu)
+
 === Version 0.6 / 2015-12-1
 * Enhancements
   * Added include_yml keyword to allow inclusion of one file within another (thanks Donavan Stanley)
