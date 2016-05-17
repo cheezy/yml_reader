@@ -12,9 +12,9 @@ class FigNewton
 By extending the `YmlReader` module you now have three new methods and two instance variables. Here are the three methods:
 
 ````ruby
-yml_directory=
+yml_directory=(directory)
 yml_directory
-load
+load(file_or_file_list)
 ````
 
 and the instance variables:
@@ -25,6 +25,17 @@ and the instance variables:
 ````
 
 The `@yml` instance variable will contain the contents of the yml file after a call to load.
+
+The load method receives a string containing a the name of a file that resides in the directory specified in @yml_directory or
+a list of comma separated names of files that reside in such directory. In the latter case, the `@yml` instance variable will hold a merge of the contents of all files in the list.
+
+```ruby
+load 'file1.yml'
+```
+or
+```ruby
+load 'file1.yml,file2.yml,file3.yml'
+```
 
 ## Installation
 

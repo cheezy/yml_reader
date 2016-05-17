@@ -39,4 +39,17 @@ describe YmlReader do
     end
   end
 
+  context 'when loading data from multiple files' do
+    before(:each) do
+      MyModule.yml_directory = File.expand_path('data', File.dirname(__FILE__))
+    end
+    
+    it 'should merge the data in all files' do
+      MyModule.load 'file_1_out_of_3.yml,file_2_out_of_3.yml,file_3_out_of_3.yml'
+      3.times do |file_number|
+        MyModule.data['first_field_from_file_#{file_number}'] == 'read_from_file_#{file_number}'
+      end
+    end
+  end
+
 end
