@@ -28,13 +28,28 @@ module YmlReader
   #
   def load(filename)
     files= filename.include?(',') ? filename.split(',') : [filename]
-    @yml = files.inject({}) do |total_merge,file|
-      total_merge.merge!(::YAML.load(ERB.new(File.read("#{yml_directory}/#{file}")).result(binding)))
+    @yml = files.inject({}) do |total_merge, file|
+      data = yml_key_include(::YAML.load(include_yml(file)))
+      total_merge.merge!(data) if data
     end
   end
-  
-  def include_yml(filename)
-    ERB.new(IO.read("#{yml_directory}/#{filename}")).result
+
+  def include_yml(file)
+    filename = Pathname.new(file).absolute? ? file : "#{yml_directory}/#{file}"
+    ERB.new(IO.read(filename)).result(binding) if File.exist?(filename)
+  end
+
+  private
+
+  def yml_key_include(data)
+    include_data = {}
+    [data['_include_']].flatten.each {|file_path| include_data.merge!(self.load(file_path))} if data.key?('_include_')
+    data.delete('_include_')
+    data.merge!(include_data)
+    data.each do |key, value|
+      data[key] = yml_key_include(value) if value.is_a?(Hash)
+    end
+    data
   end
 
 end
