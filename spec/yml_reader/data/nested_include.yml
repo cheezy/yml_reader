@@ -1,0 +1,5 @@
+_include_: 'second_chain.yml'
+include_nested:
+  keyn_1: 'Value nested 1'
+  nested_key:
+    _include_: 'nested_value.yml'
